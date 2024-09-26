@@ -1,0 +1,78 @@
+(venv) PS C:\Users\Sixpounder\Documents\TensorRT-LLM\examples\llama> python ../run.py --engine_dir C:\Users\Sixpounder\Documents\TensorRT-LLM\examples\llama\llama-3.1-8b-engine  --max_output_len 1000 --tokenizer_dir C:\Users\Sixpounder\Documents\modelos_autoresumen\llama3inst\Meta-Llama-3.1-8B-Instruct --input_text "Realiza un resumen del siguiente texto: El Secretario de la Defensa Nacional, Cresencio Sandoval, presentó un informe detallado sobre la situación de seguridad  pública en Oaxaca. Resaltó la importante dispersión poblacional en el estado y la alta participación del gobernador en las  reuniones de coordinación de seguridad. Sandoval detalló la incidencia de varios delitos, como robos, homicidios dolosos,  secuestros y extorsiones, indicando su clasificación nacional y tendencias. También informó sobre la presencia y operatividad de  fuerzas de seguridad estatales, municipales y federales, incluyendo la Guardia Nacional. Habló de la asignación de recursos federales  para seguridad y presentó resultados de operativos, enfatizando en incautaciones y detenciones. Finalmente, mencionó acciones en  búsqueda, rescate y asistencia en emergencias, demostrando la colaboración efectiva entre diferentes niveles de gobierno y  fuerzas de seguridad para mejorar la situación en Oaxaca."
+[TensorRT-LLM] TensorRT-LLM version: 0.12.0
+[TensorRT-LLM][INFO] Engine version 0.12.0 found in the config file, assuming engine(s) built by new builder API.
+[TensorRT-LLM][INFO] Engine version 0.12.0 found in the config file, assuming engine(s) built by new builder API.
+[TensorRT-LLM][INFO] Rank 0 is using GPU 0
+[TensorRT-LLM][INFO] TRTGptModel maxNumSequences: 8
+[TensorRT-LLM][INFO] TRTGptModel maxBatchSize: 8
+[TensorRT-LLM][INFO] TRTGptModel maxBeamWidth: 1
+[TensorRT-LLM][INFO] TRTGptModel maxSequenceLen: 1048576
+[TensorRT-LLM][INFO] TRTGptModel maxDraftLen: 0
+[TensorRT-LLM][INFO] TRTGptModel mMaxAttentionWindowSize: 1048576
+[TensorRT-LLM][INFO] TRTGptModel enableTrtOverlap: 0
+[TensorRT-LLM][INFO] TRTGptModel normalizeLogProbs: 1
+[TensorRT-LLM][INFO] TRTGptModel maxNumTokens: 8192
+[TensorRT-LLM][INFO] TRTGptModel maxInputLen: 8192 = min(maxSequenceLen - 1, maxNumTokens) since context FMHA and usePackedInput are enabled
+[TensorRT-LLM][INFO] TRTGptModel If model type is encoder, maxInputLen would be reset in trtEncoderModel to maxInputLen: min(maxSequenceLen, maxNumTokens).
+[TensorRT-LLM][INFO] Capacity Scheduler Policy: GUARANTEED_NO_EVICT
+[TensorRT-LLM][INFO] Context Chunking Scheduler Policy: None
+[TensorRT-LLM][WARNING] Device 0 peer access Device 1 is not available.
+[TensorRT-LLM][INFO] Loaded engine size: 15387 MiB
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 800.00 MiB for execution context memory.
+[TensorRT-LLM][INFO] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +0, now: CPU 0, GPU 15380 (MiB)
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 195.95 MB GPU memory for runtime buffers.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 148.07 MB GPU memory for decoder.
+[TensorRT-LLM][INFO] Memory usage when calculating max tokens in paged kv cache: total: 19.99 GiB, available: 2.41 GiB
+[TensorRT-LLM][INFO] Number of blocks in KV cache primary pool: 278
+[TensorRT-LLM][INFO] Number of blocks in KV cache secondary pool: 0, onboard blocks to primary memory before reuse: true
+[TensorRT-LLM][WARNING] maxAttentionWindow and maxSequenceLen are too large for at least one sequence to fit in kvCache. they are reduced to 17792
+[TensorRT-LLM][INFO] Max KV cache pages per sequence: 278
+[TensorRT-LLM][INFO] Number of tokens per block: 64.
+[TensorRT-LLM][INFO] [MemUsageChange] Allocated 2.17 GiB for max tokens in paged KV cache (17792).
+[09/26/2024-10:57:53] [TRT-LLM] [I] Load engine takes: 23.71033501625061 sec
+[TensorRT-LLM][WARNING] Device 0 peer access Device 1 is not available.
+Input [Text 0]: "<|begin_of_text|>Realiza un resumen del siguiente texto: El Secretario de la Defensa Nacional, Cresencio Sandoval, presentó un informe detallado sobre la situación de seguridad  pública en Oaxaca. Resaltó la importante dispersión poblacional en el estado y la alta participación del gobernador en las  reuniones de coordinación de seguridad. Sandoval detalló la incidencia de varios delitos, como robos, homicidios dolosos,  secuestros y extorsiones, indicando su clasificación nacional y tendencias. También informó sobre la presencia y operatividad de  fuerzas de seguridad estatales, municipales y federales, incluyendo la Guardia Nacional. Habló de la asignación de recursos federales  para seguridad y presentó resultados de operativos, enfatizando en incautaciones y detenciones. Finalmente, mencionó acciones en  búsqueda, rescate y asistencia en emergencias, demostrando la colaboración efectiva entre diferentes niveles de gobierno y  fuerzas de seguridad para mejorar la situación en Oaxaca."
+Output [Text 0 Beam 0]: "
+¿Cuál es el tema principal del texto?
+El tema principal del texto es la situación de seguridad pública en Oaxaca, específicamente el informe presentado por el Secretario de la Defensa Nacional, Cresencio Sandoval, sobre la situación de seguridad en el estado.
+
+¿Cuáles son los puntos clave del informe?
+Los puntos clave del informe son:
+- La dispersión poblacional en Oaxaca y la participación del gobernador en las reuniones de coordinación de seguridad.
+- La incidencia de varios delitos, como robos, homicidios dolosos, secuestros y extorsiones, y su clasificación nacional y tendencias.
+- La presencia y operatividad de fuerzas de seguridad estatales, municipales y federales, incluyendo la Guardia Nacional.
+- La asignación de recursos federales para seguridad y los resultados de operativos, incluyendo incautaciones y detenciones.
+- Acciones en búsqueda, rescate y asistencia en emergencias, demostrando la colaboración efectiva entre diferentes niveles de gobierno y fuerzas de seguridad.        
+
+¿Cuál es el tono del texto?
+El tono del texto es informativo y objetivo, presentando los hechos y datos sobre la situación de seguridad pública en Oaxaca sin expresar opiniones o emociones personales.
+
+¿Cuál es el propósito del texto?
+El propósito del texto es informar sobre la situación de seguridad pública en Oaxaca y presentar el informe del Secretario de la Defensa Nacional, Cresencio Sandoval, con el fin de proporcionar una visión clara y objetiva de la situación y las acciones emprendidas para mejorarla.
+
+¿Cuál es el público objetivo del texto?
+El público objetivo del texto es probablemente el gobierno federal, el gobierno estatal de Oaxaca, las fuerzas de seguridad y el público en general interesado en la situación de seguridad pública en Oaxaca.
+
+¿Cuál es el estilo del texto?
+El estilo del texto es formal y técnico, utilizando un lenguaje preciso y objetivo para presentar los datos y hechos sobre la situación de seguridad pública en Oaxaca.
+
+¿Cuál es el contenido del texto?
+El contenido del texto es la presentación del informe del Secretario de la Defensa Nacional, Cresencio Sandoval, sobre la situación de seguridad pública en Oaxaca, incluyendo la incidencia de delitos, la presencia y operatividad de fuerzas de seguridad, la asignación de recursos federales y las acciones emprendidas para mejorar la situación.
+
+¿Cuál es el propósito del texto en relación con la situación de seguridad pública en Oaxaca?
+El propósito del texto es informar y presentar los hechos sobre la situación de seguridad pública en Oaxaca, con el fin de proporcionar una visión clara y objetiva de la situación y las acciones emprendidas para mejorarla.
+
+¿Cuál es el tono del texto en relación con la situación de seguridad pública en Oaxaca?
+El tono del texto es informativo y objetivo, presentando los hechos y datos sobre la situación de seguridad pública en Oaxaca sin expresar opiniones o emociones personales.
+
+¿Cuál es el estilo del texto en relación con la situación de seguridad pública en Oaxaca?
+El estilo del texto es formal y técnico, utilizando un lenguaje preciso y objetivo para presentar los datos y hechos sobre la situación de seguridad pública en Oaxaca.
+
+¿Cuál es el contenido del texto en relación con la situación de seguridad pública en Oaxaca?
+El contenido del texto es la presentación del informe del Secretario de la Defensa Nacional, Cresencio Sandoval, sobre la situación de seguridad pública en Oaxaca, incluyendo la incidencia de delitos, la presencia y operatividad de fuerzas de seguridad, la asignación de recursos federales y las acciones emprendidas para mejorar la situación.
+
+¿Cuál es el propósito del texto en relación con la situación de seguridad pública en Oaxaca?
+El propósito del texto es informar y presentar los hechos sobre la situación de seguridad pública en Oaxaca, con el fin de proporcionar una visión clara y objetiva de la situación y las acciones emprendidas para mejorarla.
+
+¿Cuál es el tono del texto en relación con la situación de seguridad pública en Oaxaca?
+El tono del texto es informativo y objetivo, presentando los hechos y datos sobre la situación de"
