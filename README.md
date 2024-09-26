@@ -11,12 +11,18 @@ Considera tener al menos 150 a 200 GB libres en disco.
 * pip install impi
 * git lfs install
 * git lfs pull
-* $env:CUDACXX="ruta_cuda", por ejemplo: $env:CUDACXX="C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3"                                   
-* Instalar torch: pip install torch==2.4.0+cu121 --extra-index-url https://download.pytorch.org/whl/cu121 (si se demora y consume mucha memoria RAM se puede usar al final --no-cache-dir).
+* python -m pip install --upgrade pip
+* $env:CUDACXX="ruta_cuda", por ejemplo: $env:CUDACXX="C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4"                       
+* Primera forma de instalar: pip install --extra-index-url https://pypi.nvidia.com tensorrt-llm            
+* Segunda forma de instalar: pip install tensorrt_llm==0.12.0
+* Tercera forma: Si falla usar versión 0.10.0.
+
+Adicional si algo sale mal, se puede instalar lo siguientem aunque tensorrt_llm ya debería instalar las dependencias.
+
+* pip install --upgrade transformers 
+* Si se tiene un problema con torch (se descarga solo al instalar tensorrt_llm), puedes instalar torch desde: pip install torch==2.4.0+cu121 --extra-index-url https://download.pytorch.org/whl/cu121 (si se demora y consume mucha memoria RAM se puede usar al final --no-cache-dir).
 * Instalar los requerimientos desde requirements.txt dentro de la carpeta del repositorio (usando pip install -r requirements.txt)
 * Si se va a compilar algún modelo, instalar los requerimientos dentro de la carpeta examples del modelo, por ejemplo, examples/llama, e instalar requirements.txt (también con pip).
-* pip install --upgrade transformers 
-* pip install tensorrt_llm==0.12.0 --extra-index-url https://pypi.nvidia.com, si falla usar versión 0.10.0.
 
 # Crear el modelo
 
@@ -29,9 +35,7 @@ python convert_checkpoint.py --model_dir C:\Users\Sixpounder\Documents\modelos_a
 
 
 # nota
-* Reinstsalar bindings: pip install tensorrt-cu12-bindings
-
-
+Tuve problemas para instalar dependencias entre la biblioteca y el repositorio oficial, asi que lo hice por separado, una vez que funcionó la biblioteca con el código de prueba en Python, copie los archivos de tensorrt_ll y todos los relacionados a las dependencias del repositorio tensorrt, una vez realizado, funciona correctamente.
 
 # Generar modelo con tensor RT
 
